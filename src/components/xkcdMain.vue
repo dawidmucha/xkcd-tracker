@@ -74,13 +74,11 @@ const onBtnPress = (option) => {
         <button @click="onBtnPress(1)">&gt;</button>
         <button @click="onBtnPress(2)">&gt;&gt;</button>
       </div>
-
       <div id="comicNavLower">
         <div>  
           <input type="text" v-model="gotoComic" placeholder="comic nr" />
           <button @click="onBtnPress(0)">SEND</button>
         </div>
-
         <button @click="store.markAsSeen(store.num)">mark as seen</button>
       </div>
     </div>
@@ -88,8 +86,8 @@ const onBtnPress = (option) => {
 </template>
 
 <style scoped>
-main {
-  display: grid;
+#xkcdMain {
+  display: block;
   grid-template: 80% 20% / 100%;
 }
 

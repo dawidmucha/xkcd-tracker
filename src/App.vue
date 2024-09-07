@@ -1,33 +1,30 @@
 <script setup>
 import XkcdMap from '@/components/xkcdMap.vue'
 import XkcdMain from '@/components/xkcdMain.vue'
+
+import '@/main.css'
 </script>
 
 <template>
-    <main id="xkcdTracker">
-      <XkcdMap id="map" />
-      <XkcdMain id="main" />
-    </main>
+  <div id="xkcdApp">
+    <XkcdMap id="xkcdMap" />
+    <XkcdMain id="xkcdMain" />
+  </div>
 </template>
 
-<style>
-#app {
-  padding: 0;
-}
-
-#xkcdTracker {
+<style scoped>
+#xkcdApp {
   display: flex;
   flex-direction: row;
+  width: 100vw;
 }
 
-#map { 
+#xkcdMap {
   width: 281px;
-  flex-shrink: 0;
-  background-color: #666;
+  height: 100vh;
 }
 
-#main {
+#xkcdMain {
   flex-grow: 1;
-  background-color: #888;
 }
 </style>
