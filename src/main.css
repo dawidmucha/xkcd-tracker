@@ -1,4 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
   margin: 0;
   padding: 0;
+
+  background-color: #444;
+
+  font-family: "Nunito Sans", sans-serif;
+}
+
+button, input {
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+
+  padding: 0.4rem 0.4rem 0.31rem 0.4rem;
+  margin: 0.1rem;
+
+  border: 0;
+  border-radius: 5px;
+
+  background-color: #999;
+
+  line-height: 24px;
+}
+
+label {
+  margin-left: 1rem;
+}
+
+h1 {
+  font-family: "Noto Sans", sans-serif;
+  margin-top: 0;
 }

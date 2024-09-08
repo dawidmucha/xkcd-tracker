@@ -16,12 +16,13 @@ import '@/main.css'
 #xkcdApp {
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: calc(100vw - (100vw - 100%));
 }
 
 #xkcdMap {
   width: 281px;
   height: 100vh;
+  overflow: hidden;
 }
 
 #xkcdMain {

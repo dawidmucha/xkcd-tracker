@@ -38,7 +38,7 @@ const onBtnPress = (option) => {
 </script>
 
 <template>
-  <main id="xkcdMain">
+  <main>
     <!--  * Pinia store print
     <div> 
       <b>store:</b>
@@ -59,23 +59,23 @@ const onBtnPress = (option) => {
     </div> 
     -->
     <div id="comicImageContainer">
-      <a :href="'https://xkcd.com/'+store.num+'/'" target="_blank"><img id="image" :src="store.img" /></a>
+      <div><a :href="'https://xkcd.com/'+store.num+'/'" target="_blank"><img id="image" :src="store.img" /></a></div>
     </div>
 
     <div id="comicNavContainer">
-      <div id="comicNavTitle">{{ store.title }}</div>
+      <div id="comicNavTitle"><h1>{{ store.title }}</h1></div>
       <div id="comicNavUpper">
-        <button @click="onBtnPress(-2)">&lt;&lt;</button>
-        <button @click="onBtnPress(-1)">&lt;</button>
+        <button class="buttonSquare" @click="onBtnPress(-2)">&lt;&lt;</button>
+        <button class="buttonSquare" @click="onBtnPress(-1)">&nbsp;&lt;&nbsp;</button>
         <div id="comicNavUpperCenter">
           <input id="comicRange" type="range" min="1" :max="store.numMax" v-model="store.num" @change="store.getComic(store.num)" /> 
-          <label for="comicRange">{{ store.num }}/{{ store.numMax }}</label>
+          <div><label for="comicRange">{{ store.num }}/{{ store.numMax }}</label></div>
         </div>
-        <button @click="onBtnPress(1)">&gt;</button>
-        <button @click="onBtnPress(2)">&gt;&gt;</button>
+        <button class="buttonSquare" @click="onBtnPress(1)">&nbsp;&gt;&nbsp;</button>
+        <button class="buttonSquare" @click="onBtnPress(2)">&gt;&gt;</button>
       </div>
       <div id="comicNavLower">
-        <div>  
+        <div id="comicNavLowerGoto">  
           <input type="text" v-model="gotoComic" placeholder="comic nr" />
           <button @click="onBtnPress(0)">SEND</button>
         </div>
@@ -85,42 +85,26 @@ const onBtnPress = (option) => {
   </main>
 </template>
 
-<style scoped>
-#xkcdMain {
-  display: block;
-  grid-template: 80% 20% / 100%;
-}
-
-button, input[type=text] {
-  padding: 0.5rem;
-  font-size: 1.2rem;
-}
-
-label {
-  font-size: 1.3rem;
-  padding-left: 1rem;
-  position: relative;
-  bottom: 3px;
+<style scoped lang="scss">
+main {
+  display: grid;
+  grid-template-rows: 75vh 25vh;
 }
 
 #comicImageContainer {
-  height: calc(100vh - (100vh - 100%));
-  overflow: auto;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  align-items: top;
+  justify-content: center;
+
+  overflow-y: scroll;
+  overflow-x: scroll;
+
+  div {
+    margin: 0.4rem;
+  }
 }
 
 #comicNavContainer {
-  background: radial-gradient(
-    ellipse at 50% 90%,
-    rgba(0,0,0,0.7) 20%, 
-    rgba(0,0,0,0) 70%
-  );
-
-  position: absolute;
-  bottom: 0;
-  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,33 +112,37 @@ label {
 }
 
 #comicNavTitle {
-  font-size: 2rem;
-  text-shadow: black 2px 0 7px;
+  text-align: center;
 }
 
 #comicNavUpper {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
 }
 
 #comicNavUpperCenter {
-  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+
+  padding: 0 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 #comicNavLower {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-input[type=text] {
-  width: 6rem;
-}
-
-#image {
-  margin: 0 auto;
+#comicNavLowerGoto {
+  margin-right: 2rem;
 }
 </style>

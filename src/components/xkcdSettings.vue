@@ -14,13 +14,13 @@ const store = useXkcdStore()
       <button @click="store.setSettingsCurrent('filter')">filter</button>
     </div>
     <div class="settingsContainer" v-show="store.settingsCurrent === 'size'">
-      <button @click="store.setSettingsCurrent('')">&lt;</button>
+      <button class="buttonSquare" @click="store.setSettingsCurrent('')">&nbsp;&lt;&nbsp;</button>
       <button @click="store.settingsChange('size', 'large')" :disabled="selectedSizeProp == 'large'">large</button>
       <button @click="store.settingsChange('size', 'small')" :disabled="selectedSizeProp == 'small'">small</button>
       <button @click="store.settingsChange('size', 'minimal')" :disabled="selectedSizeProp == 'minimal'">minimal</button>
     </div>
     <div class="settingsContainer" v-show="store.settingsCurrent === 'filter'">
-      <button @click="store.setSettingsCurrent('')">&lt;</button>
+      <button class="buttonSquare" @click="store.setSettingsCurrent('')">&nbsp;&lt;&nbsp;</button>
       <button @click="store.settingsChange('filter', 'seen')" :disabled="selectedFilterProp == 'seen'">seen</button>
       <button @click="store.settingsChange('filter', 'unseen')" :disabled="selectedFilterProp == 'unseen'">unseen</button>
       <button @click="store.settingsChange('filter', 'both')" :disabled="selectedFilterProp == 'both'">both</button>
@@ -33,11 +33,7 @@ const store = useXkcdStore()
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-}
 
-button {
-  font-size: 1.2rem;
-  padding: 0.2rem;
-  margin: 0.4rem;
+  margin: 0.5rem 0;
 }
 </style>
