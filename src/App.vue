@@ -1,31 +1,34 @@
 <script setup>
 import XkcdMap from '@/components/xkcdMap.vue'
 import XkcdMain from '@/components/xkcdMain.vue'
+import XkcdNavigation from '@/components/xkcdNavigation.vue'
 
 import '@/main.css'
 </script>
 
 <template>
-  <div id="xkcdApp">
-    <XkcdMap id="xkcdMap" />
-    <XkcdMain id="xkcdMain" />
-  </div>
+<div id="xkcdApp">
+  <XkcdNavigation id="xkcdNavigation" />
+  <XkcdMain />
+  <XkcdMap id="xkcdMap" />
+</div>
 </template>
 
 <style scoped>
 #xkcdApp {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 25vw 75vw;
+  grid-template-rows: 25vh 75vh;
   width: calc(100vw - (100vw - 100%));
 }
 
 #xkcdMap {
-  width: 281px;
-  height: 100vh;
   overflow: hidden;
 }
 
 #xkcdMain {
-  flex-grow: 1;
+  grid-row-end: span 2;
+  height: 100%;
+  overflow: scroll;
 }
 </style>
