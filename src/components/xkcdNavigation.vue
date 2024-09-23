@@ -2,10 +2,50 @@
 import { ref, onMounted } from 'vue'
 
 import { useXkcdStore } from '@/stores/xkcdStore'
+import { useKeypress } from 'vue3-keypress';
 
 const store = useXkcdStore()
 
 const gotoComic = ref(null)
+
+const onBtnPress = (option) => {
+  const _gotoComic = gotoComic.value
+  gotoComic.value = null
+
+  switch(option) {
+    case -2:
+      store.getComic(1)
+      break
+    case -1:
+      if(store.num > 1) store.getComic(store.num - 1)
+      break
+    case 0:
+      store.getComic(_gotoComic)
+      break
+    case 1:
+      if(store.num < store.numMax) store.getComic(store.num + 1)
+      break
+    case 2:
+      store.getComic(store.numMax)
+      break
+    default:
+      console.error("onBtnPress value outside <-2, 2> range")
+  }
+}
+
+useKeypress({
+  keyEvent: "keydown",
+  keyBinds: [{
+    keyCode: "left",
+    success: () => onBtnPress(-1)
+  }, {
+    keyCode: "right",
+    success: () => onBtnPress(1)
+  }, {
+    keyCode: "space",
+    success: () => store.markAsSeen(store.num)
+  }]
+})
 
 onMounted(() => {
   store.updateLocalStorage()

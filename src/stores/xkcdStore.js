@@ -86,8 +86,6 @@ export const useXkcdStore = defineStore('xkcd', () => {
   function markAsSeen(comicNumber) {
     if(localStorage.getItem('xkcd') === null) return;
 
-    console.log(comicNumber, "marked as seen")
-
     const ls = localStorage.getItem('xkcd').split(',')
     ls[comicNumber] = 1
     localStorage.setItem('xkcd', ls.toString())

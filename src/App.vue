@@ -10,7 +10,7 @@ import '@/main.css'
 <div id="xkcdApp">
   <XkcdNavigation id="xkcdNavigation" />
   <XkcdMain />
-  <XkcdMap id="xkcdMap" />
+  <XkcdMap id="xkcdMap"/>
 </div>
 </template>
 
@@ -18,17 +18,23 @@ import '@/main.css'
 #xkcdApp {
   display: grid;
   grid-template-columns: 25vw 75vw;
-  grid-template-rows: 25vh 75vh;
+  grid-template-rows: 20vh 80vh;
   width: calc(100vw - (100vw - 100%));
 }
 
+#xkcdNavigation {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 #xkcdMap {
-  overflow: hidden;
+  overflow: auto;
+
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #xkcdMain {
   grid-row-end: span 2;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
 }
 </style>

@@ -10,35 +10,11 @@ const gotoComic = ref(null)
 onMounted(() => {
   store.updateLocalStorage()
 })
-
-const onBtnPress = (option) => {
-  const _gotoComic = gotoComic.value
-  gotoComic.value = null
-
-  switch(option) {
-    case -2:
-      store.getComic(1)
-      break
-    case -1:
-      if(store.num > 1) store.getComic(store.num - 1)
-      break
-    case 0:
-      store.getComic(_gotoComic)
-      break
-    case 1:
-      if(store.num < store.numMax) store.getComic(store.num + 1)
-      break
-    case 2:
-      store.getComic(store.numMax)
-      break
-    default:
-      console.error("onBtnPress value outside <-2, 2> range")
-  }
-}
 </script>
 
 <template>
 <div id="xkcdMain">
+  <h1>{{ store.title }}</h1>
   <a :href="'https://xkcd.com/'+store.num+'/'" target="_blank"><img id="image" :src="store.img" /></a>
 </div>
 </template>
@@ -46,6 +22,7 @@ const onBtnPress = (option) => {
 <style scoped lang="scss">
 #xkcdMain {
   display: flex;
+  flex-direction: column;
   align-items: top;
   justify-content: safe center;
   align-items: safe center;

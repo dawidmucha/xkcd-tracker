@@ -23,14 +23,14 @@ store.$subscribe(() => {
     case "minimal": selectedSize.value = "minimal"; break
     case "small": selectedSize.value = "small"; break
     case "large": selectedSize.value = "large"; break
-    default: console.error('store.size invalid value')
+    default: selectedSize.value = ""
   }
 
   switch(store.filter) {
     case "unseen": selectedFilter.value = "unseen"; break
     case "seen": selectedFilter.value = "seen"; break
     case "both": selectedFilter.value = "both"; break
-    default: console.error('store.filter invalid value')
+    default: selectedFilter.value = ""
   }
 })
 
@@ -46,7 +46,7 @@ const isComicShown = (setting, comic) => {
       <XkcdSettings :selectedSizeProp="selectedSize" :selectedFilterProp="selectedFilter" />
 
       <ul id="xkcdMapList">
-        <span v-for="comicNumber in store.numMax" :key="comicNumber">
+        <span v-for="comicNumber in store.numMax" :key="comicNumber" class="tileSpan">
           <li v-if="isComicShown(selectedFilter, ls[comicNumber])"> 
             <!-- <div @click="store.getComic(comicNumber)">{{ comicNumber }} {{ ls[comicNumber] === 0 ? "" : " - Seen" }}</div>  -->
             <div @click="store.getComic(comicNumber)" :class="{ 
@@ -59,6 +59,7 @@ const isComicShown = (setting, comic) => {
               mapTileCurrent: comicNumber === store.num
             }"><div>{{ comicNumber }}</div></div>
           </li>
+          <li v-else class="tileSpanHider">babooba</li>
         </span>
       </ul>
     </div>
@@ -77,6 +78,10 @@ const isComicShown = (setting, comic) => {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .mapTile {
@@ -123,5 +128,9 @@ const isComicShown = (setting, comic) => {
 .mapTileCurrent {
   box-sizing: border-box;
   border: 1px solid yellow;
+}
+
+.tileSpan:has(.tileSpanHider) {
+  display: none;
 }
 </style>
