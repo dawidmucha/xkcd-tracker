@@ -66,8 +66,10 @@ onMounted(() => {
     <div id="comicRangeLabel"><label for="comicRange">{{ store.num }}/{{ store.numMax }}</label></div>
   </div>
 	<div id="comicNavLower">
-		<input type="text" v-model="gotoComic" placeholder="comic nr" />
-		<button @click="onBtnPress(0)">SEND</button>
+		<span>
+      <input type="text" v-model="gotoComic" placeholder="comic nr" />
+		  <button @click="onBtnPress(0)">SEND</button>
+    </span>
 		<button id="btnSeen" @click="store.markAsSeen(store.num)">mark as seen</button>
 	</div>
 </div>
@@ -130,7 +132,7 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   input {
     width: 6vw;
