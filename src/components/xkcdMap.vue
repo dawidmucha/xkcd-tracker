@@ -1,7 +1,7 @@
 <script setup>
 import XkcdSettings from '@/components/xkcdSettings.vue'
 import { useXkcdStore } from '@/stores/xkcdStore'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 const store = useXkcdStore()
 
@@ -17,6 +17,8 @@ if(localStorage.getItem('xkcd') != null) {
 }
 
 store.$subscribe(() => {
+  if (!localStorage.getItem('xkcd')) return
+
   ls.value = localStorage.getItem('xkcd').split(',').map(Number)
 
   switch(store.size) {
@@ -59,7 +61,7 @@ const isComicShown = (setting, comic) => {
               mapTileCurrent: comicNumber === store.num
             }"><div>{{ comicNumber }}</div></div>
           </li>
-          <li v-else class="tileSpanHider">babooba</li>
+          <li v-else class="tileSpanHider"></li>
         </span>
       </ul>
     </div>

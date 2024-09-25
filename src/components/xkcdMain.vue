@@ -9,6 +9,9 @@ const gotoComic = ref(null)
 
 onMounted(() => {
   store.updateLocalStorage()
+
+  if(!localStorage.getItem('filter')) localStorage.setItem('filter', 'both')
+  if(!localStorage.getItem('size')) localStorage.setItem('size', 'large')
 })
 </script>
 
