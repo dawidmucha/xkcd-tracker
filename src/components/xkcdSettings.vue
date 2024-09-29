@@ -1,6 +1,6 @@
 <!-- eslint-disable no-unused-vars -->
 <script setup>
-import { useXkcdStore } from '@/stores/xkcdStore'
+import { useXkcdStore } from '@/stores/xkcdStore.vue'
 
 const props = defineProps(['selectedSizeProp', 'selectedFilterProp'])
 
