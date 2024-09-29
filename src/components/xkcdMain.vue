@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-import { useXkcdStore } from '@/stores/xkcdStore.vue'
+import { useXkcdStore } from '@/stores/xkcdStore.js'
 
 const store = useXkcdStore()
 

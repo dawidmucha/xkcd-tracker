@@ -1,6 +1,6 @@
 <script setup>
 import XkcdSettings from '@/components/xkcdSettings.vue'
-import { useXkcdStore } from '@/stores/xkcdStore.vue'
+import { useXkcdStore } from '@/stores/xkcdStore.js'
 import { ref, reactive } from 'vue'
 
 const store = useXkcdStore()
